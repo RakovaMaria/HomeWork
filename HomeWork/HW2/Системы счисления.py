@@ -38,3 +38,21 @@ while decimal_result > 0:
 
 # Выводим результат
 print(f"Результат в {base2}-й системе счисления: {result_str}")
+
+
+
+
+import subprocess
+
+# Шаг 1: Добавить изменения в коммит
+subprocess.run(['git', 'add', '.'])
+
+# Шаг 2: Сделать коммит
+subprocess.run(['git', 'commit', '-m', 'Внесены изменения'])
+
+# Шаг 3: Войти в свой аккаунт GitHub
+subprocess.run(['git', 'config', '--global', 'user.email', 'm98535248@gmail.com'])
+subprocess.run(['git', 'config', '--global', 'user.name', 'RakovaMaria'])
+
+# Шаг 4: Повторить git push
+subprocess.run(['git', 'push'])
