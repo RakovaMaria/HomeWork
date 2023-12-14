@@ -263,3 +263,31 @@ class Cookable(GameObject, Eatable, Burnable):
         # Возвращение значения hp (здоровья), когда self.burned равно True, в противном случае возвращается
         # отрицательное значение hp.
         return hp if self.burned else -hp
+
+
+if __name__ == '__main__':
+    # Создание локаций с разными размерами
+    location1 = Location(name='Location1', width=10, height=5, length=15)
+    location2 = Location(name='Location2', width=8, height=6, length=12)
+
+    # Создание объектов для локаций
+    # Создается объект 'Object1_Loc1' и устанавливается на первую локацию (location1) в координатах (5, 2, 3)
+    object1_loc1 = GameObject(name='Object1_Loc1', loc=location1, x=5, y=2, z=3)
+    # Создается объект 'Object2_Loc1'. Этот объект также находится в первой локации и имеет начальное здоровье 50
+    object2_loc1 = LivingObject(name='Object2_Loc1', loc=location1, x=8, y=3, z=4, hp=50)
+    # Создается объект 'Object3_Loc2'. Этот объект находится во второй локации и представляет собой оружие
+    # с указанным уроном и радиусом атаки
+    object3_loc2 = Weapon(name='Object3_Loc2', loc=location2, x=2, y=1, z=5, damage=10, radius=2)
+
+    # Пример использования оружия
+    # Объект представляет собой персонажа игрока, находящегося во второй локации и начинающего игру с 30 здоровьем
+    player = LivingObject(name='Player', loc=location2, x=4, y=2, z=3, hp=30)
+    # Выводится текущее здоровье игрока
+    print(f"player: {player.hp}")
+
+    # Атака оружием
+    # Происходит атака игрока оружием. Класс Weapon определяет метод attack, который может уменьшать здоровье объекта
+    # LivingObject
+    object3_loc2.attack(player)
+    # После атаки выводится обновленное здоровье игрока
+    print(f"Player after attack: {player.hp}")
